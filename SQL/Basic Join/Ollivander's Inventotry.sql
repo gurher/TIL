@@ -1,5 +1,4 @@
 
-
 SELECT w.ID, P.AGE, m.coins_needed, w.power 
 FROM (
         SELECT 
