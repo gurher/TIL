@@ -1,11 +1,16 @@
 
-SELECT w.ID, P.AGE, m.coins_needed, w.power 
+SELECT 
+    w.ID
+    , P.AGE
+    , m.coins_needed
+    , w.power 
 FROM (
         SELECT 
         code, MIN(coins_needed) AS coins_needed
         , power 
         FROM wands 
         GROUP BY code, power
+        
         ) AS m 
 LEFT JOIN wands AS w 
     ON w.code = m.code 
