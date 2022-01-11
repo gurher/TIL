@@ -21,17 +21,7 @@ HAVING COUNT(challenges_created) > 1
     AND 
 
 
--- WITH counter AS (
---     SELECT 
---         h.hacker_id
---         , h.name
---         , COUNT(*) AS challenges_created
---     FROM challenges c
---     LEFT JOIN hackers h 
---         ON c.hacker_id = h.hacker_id
---     GROUP BY h.hacker_id, h.name
---                 )
-    
+
 -- SELECT 
 --     hackers.hacker_id
 --     , hackers.name
