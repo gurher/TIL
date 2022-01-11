@@ -6,7 +6,8 @@ SELECT
     , w.power 
 FROM (
         SELECT 
-        code, MIN(coins_needed) AS coins_needed
+        code 
+        , MIN(coins_needed) AS coins_needed
         , power 
         FROM wands 
         GROUP BY code, power
