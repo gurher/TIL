@@ -33,20 +33,22 @@ HAVING COUNT(challenges_created) > 1
 --                 )
     
 -- SELECT 
---     hacker_id
---     , name
---     , challenges_created
--- FROM counter
--- WHERE challenges_created = (
---                             SELECT 
---                             MAX(challenges_created) 
---                             FROM counter
---                             )
---     OR challenges_created IN (
---                             SELECT challenges_created
---                             FROM counter
---                             GROUP BY challenges_created
---                             HAVING COUNT(*) = 1
---                             )
--- ORDER BY challenges_created DESC, hacker_id
-
+--     hackers.hacker_id
+--     , hackers.name
+--     , COUNT(*) AS challenges_created
+-- FROM hackers
+-- LEFT JOIN challenges 
+--     ON hackers.hacker_id = challenges.hacker_id
+-- GROUP BY hackers.hacker_id, hackers.name
+-- HAVING challenges_created IN (SELECT challenges_created
+--                               FROM (SELECT hacker_id
+--                                         , COUNT(*) AS challenges_created
+--                                     FROM challenges
+--                                     GROUP BY challenges.hacker_id) sub2
+--                               GROUP BY challenges_created
+--                               HAVING COUNT(*) = 1)
+--     OR challenges_created = (SELECT MAX(challenges_created)
+--                              FROM (SELECT COUNT(*) AS challenges_created
+--                                    FROM challenges
+--                                    GROUP BY challenges.hacker_id) sub1)
+-- ORDER BY challenges_created DESC, hackers.hacker_id
