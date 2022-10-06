@@ -1,3 +1,3 @@
 SELECT *
-FROM CITY
-WHERE ID = '1661';
+FROM city
+WHERE id = '1661';

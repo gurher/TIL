@@ -1,2 +1,3 @@
-SELECT CITY, STATE
-FROM STATION;
+SELECT city, 
+        state
+FROM station;
