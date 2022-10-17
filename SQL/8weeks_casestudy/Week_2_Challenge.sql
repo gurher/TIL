@@ -1,18 +1,6 @@
--- Schema SQL Query SQL ResultsEdit on DB Fiddle
--- Example Query:
--- SELECT
--- 	runners.runner_id,
---     runners.registration_date,
--- 	COUNT(DISTINCT runner_orders.order_id) AS orders
--- FROM pizza_runner.runners
--- INNER JOIN pizza_runner.runner_orders
--- 	ON runners.runner_id = runner_orders.runner_id
--- WHERE runner_orders.cancellation IS NOT NULL
--- GROUP BY
--- 	runners.runner_id,
---     runners.registration_date;
-    
-    
+
+-- A. Pizza Metrics
+
 -- 1) How many pizzas were ordered?
 
 SELECT 
@@ -21,14 +9,11 @@ SELECT
 FROM pizza_runner.customer_orders customer_orders
 
 
-
 -- 2) How many unique customer orders were made?
 
 SELECT 
 	COUNT(DISTINCT (customer_orders.customer_id,customer_orders.pizza_id))
 FROM pizza_runner.customer_orders customer_orders
-
-
 
 
 -- 3) How many successful orders were delivered by each runner?
@@ -208,3 +193,42 @@ SELECT
 FROM final
 GROUP BY 1
 ORDER BY 1
+
+
+
+
+-- B. Runner and Customer Experience
+
+    
+-- 1) How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
+
+
+SELECT 
+	DATE_TRUNC('week', runners.registration_date),
+    COUNT(DISTINCT runners.runner_id)
+FROM pizza_runner.runners runners
+GROUP BY 1
+ORDER BY 1 ASC
+
+
+
+-- 2) What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
+
+SELECT 
+	runner_orders.runner_id,
+	AVG(CAST(SUBSTRING(runner_orders.duration ,1,2) AS INT))
+FROM pizza_runner.runner_orders runner_orders
+WHERE runner_orders.pickup_time != 'null'
+GROUP BY 1
+ORDER BY 1 ASC
+
+-- 3) Is there any relationship between the number of pizzas and how long the order takes to prepare?
+
+
+
+
+
+-- 4) What was the average distance travelled for each customer?
+-- 5) What was the difference between the longest and shortest delivery times for all orders?
+-- 6) What was the average speed for each runner for each delivery and do you notice any trend for these values?
+-- 7) What is the successful delivery percentage for each runner?
