@@ -18,7 +18,7 @@ ORDER BY 1
 
 -- 2. How many days has each customer visited the restaurant?
 
-SELECT 
+SELECT  
 	sales.customer_id,
     COUNT(DISTINCT sales.order_date)
 FROM dannys_diner.sales sales
