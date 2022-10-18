@@ -83,31 +83,26 @@ WHERE row_number = 1
 
 
 -- 7) For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
-WITH final AS (
+SELECT 
+	customer_id,
+    SUM(CASE WHEN new_table.exclusions IS NOT NULL OR new_table.extras IS NOT NULL THEN 1 ELSE 0 END ) , 
+    SUM(CASE WHEN new_table.exclusions IS NULL AND new_table.extras IS NULL THEN 1 ELSE 0 END) 
 
-    SELECT 
-        CASE WHEN new_table.exclusions IS NOT NULL OR new_table.extras IS NOT NULL THEN 'change' ELSE 'No Change' END AS topping_changes
-
-    FROM (SELECT 
-            customer_orders.order_id,
-            customer_orders.customer_id,
-            customer_orders.pizza_id, 
-            CASE WHEN customer_orders.exclusions IS NULL OR customer_orders.exclusions = 'null' OR customer_orders.exclusions = ''
-            THEN NULL ELSE customer_orders.exclusions END,
-            CASE WHEN customer_orders.extras IS NULL OR customer_orders.extras = 'null' OR customer_orders.extras = '' THEN NULL ELSE customer_orders.extras END,
-            customer_orders.order_time
+FROM (SELECT 
+          customer_orders.order_id,
+          customer_orders.customer_id,
+          customer_orders.pizza_id, 
+          CASE WHEN customer_orders.exclusions IS NULL OR customer_orders.exclusions = 'null' OR customer_orders.exclusions = ''
+          THEN NULL ELSE customer_orders.exclusions END,
+          CASE WHEN customer_orders.extras IS NULL OR customer_orders.extras = 'null' OR customer_orders.extras = '' THEN NULL ELSE customer_orders.extras END,
+          customer_orders.order_time
           FROM pizza_runner.customer_orders customer_orders   
           INNER JOIN pizza_runner.runner_orders delivered_orders 
-              ON delivered_orders.order_id = customer_orders.order_id
+          ON delivered_orders.order_id = customer_orders.order_id
           WHERE delivered_orders.pickup_time != 'null'
-          ) new_table
-	)
-    
-SELECT
-	final.topping_changes,
-    COUNT(*)
-FROM final
-GROUP BY 1
+         ) new_table
+GROUP BY 1      
+ORDER BY 1 ASC
 
 
 -- 8) How many pizzas were delivered that had both exclusions and extras?
@@ -226,9 +221,73 @@ ORDER BY 1 ASC
 
 
 
+WITH order_counts AS (
+	SELECT
+        customer_orders.order_id,
+        COUNT( customer_orders.pizza_id) AS counts
+    FROM pizza_runner.customer_orders customer_orders
+    GROUP BY 1
+    ORDER BY 1
+  				)
+                
+SELECT
+	-- order_counts.order_id,        
+    order_counts.counts,
+	AVG(CAST(SUBSTRING(runner_orders.duration ,1,2) AS INT))
+
+FROM order_counts
+INNER JOIN pizza_runner.runner_orders runner_orders
+	ON runner_orders.order_id = order_counts.order_id
+WHERE runner_orders.pickup_time != 'null'    
+GROUP BY counts
+
+-- WITH table1 AS (
+
+--     SELECT 
+--         customer_orders.order_id,
+--         customer_orders.customer_id,
+--         customer_orders.pizza_id,
+--         CASE WHEN customer_orders.exclusions IS NULL OR customer_orders.exclusions = 'null' OR customer_orders.exclusions = '' THEN FALSE ELSE TRUE END AS exclusions, 
+--         CASE WHEN customer_orders.extras IS NULL OR customer_orders.extras = 'null' OR customer_orders.extras = '' THEN FALSE ELSE TRUE END AS extras,
+--         CAST(SUBSTRING(runner_orders.duration ,1,2) AS INT) AS duration
+
+--     FROM pizza_runner.customer_orders customer_orders 
+--     INNER JOIN pizza_runner.runner_orders runner_orders
+--         ON runner_orders.order_id = customer_orders.order_id
+--     WHERE runner_orders.pickup_time != 'null'    
+
+--   				)
+                
+-- SELECT 
+
+-- 	table1.exclusions,
+--     AVG(table1.duration)
+	
+-- FROM table1
+-- GROUP BY 1
 
 
 -- 4) What was the average distance travelled for each customer?
+
+-- SELECT 
+-- 		DISTINCT 
+-- 		customer_orders.order_id,
+--         customer_orders.customer_id,
+--         SUBSTRING(runner_orders.distance,1,4),
+--         -- POSITION(runner_orders.distance,),
+        
+--         -- INSTR(runner_orders.distance,' '),
+        
+--         -- regexp_substr(runner_orders.distance, '^\d+'),
+--         runner_orders.distance
+
+-- FROM pizza_runner.customer_orders customer_orders 
+-- INNER JOIN pizza_runner.runner_orders runner_orders
+-- 	ON runner_orders.order_id = customer_orders.order_id
+-- WHERE runner_orders.pickup_time != 'null' 
+
+
+
 -- 5) What was the difference between the longest and shortest delivery times for all orders?
 -- 6) What was the average speed for each runner for each delivery and do you notice any trend for these values?
 -- 7) What is the successful delivery percentage for each runner?
