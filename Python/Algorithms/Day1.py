@@ -15,10 +15,10 @@ class Solution:
         
         while self.left < self.right:
             self.mid = self.left + (self.right - self.left) // 2
-            if isBadVersion(self.mid):
+            if firstBadVersion(self, self.mid):
                 self.right = self.mid
             else:
-                self.left = mid + 1
+                self.left = self.mid + 1
         return self.left
 
 
