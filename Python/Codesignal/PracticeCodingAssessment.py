@@ -1,10 +1,11 @@
 
 def concatenationsSum(): 
     
-	"""
-	Given an array of positive integers a, your task isto calculate the sumof every possible a[i] ∘ a[j], where a[i] ∘ a[j] isthe concatenation
+    """
+    Given an array of positive integers a, your task isto calculate the sumof every possible a[i] ∘ a[j], where a[i] ∘ a[j] is the concatenation
     of the string representations of a[i] anda[j] respectively.
-    """ 
+    """
+     
     return None
     
 def makeIncreasing():
@@ -14,3 +15,8 @@ def makeIncreasing():
     """
     
     return None
+
+
+
+
+
