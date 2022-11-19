@@ -38,5 +38,37 @@ class Solution(object):
         # final = front + back
         # return final
         """
+        
+#         del nums[-k:]
+
+#         nums[:0] = front
+
+#         x = k%len(nums)
+
+#         def rev(s,e):
+#             while s<e:
+#                 nums[s], nums[e] = nums[e], nums[s]
+#                 s+=1
+#                 e-=1
+
+#         nums.reverse()
+#         rev(0,x-1)
+#         rev(x, len(nums)-1)
+
+#         return nums
+    
+    
+        # temp = nums.copy()
+        
+        temp = [nums[i] for i in range(len(nums))]
+
+        for i in range(len(nums)):
+            nums[(i+k)%len(nums)] = temp[i]
+
+        return nums    
+
+
+    
+    
     
 
