@@ -8,17 +8,17 @@ WITH moment_user AS (
     r.ride_date,
     ROW_NUMBER() OVER(PARTITION BY r.user_id ORDER BY r.ride_date) AS rnk,
     r.ride_date - u.registration_date AS date_diff,
-    CASE WHEN u.registration_date = r.ride_date THEN 'moment_user' ELSE 'others' END AS user_group   
+    CASE WHEN u.registration_date = r.ride_date THEN 'moment_user' ELSE NULL END AS user_group   
     FROM users u
     INNER JOIN rides r
       ON u.user_id = r.user_id
     
         )
         
-        
 SELECT
+
   ROUND(AVG(date_diff),2) AS average_delay
-  
+
 FROM moment_user
 WHERE user_id IN (SELECT DISTINCT user_id
                   FROM moment_user
