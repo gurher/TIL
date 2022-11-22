@@ -55,6 +55,3 @@ WHERE user_id IN (SELECT DISTINCT user_id
 -- SELECT ROUND(AVG(ride_date - lag_ride_date),2) AS average_delay
 -- FROM rides_cte
 -- WHERE ride_nr=2;
-
-
-
