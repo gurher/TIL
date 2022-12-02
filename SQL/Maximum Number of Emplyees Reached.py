@@ -2,8 +2,6 @@ import pandas as pd
 import datetime as dt
 
 
-
-
 # Start writing code
 uber_employees = [1,2,3,3,5]
 uber_employees.head()
