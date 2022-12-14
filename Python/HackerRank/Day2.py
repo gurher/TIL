@@ -33,12 +33,22 @@ def diagonalDifference(arr):
 
 
 
-print(a)
+a = [34,5,3,2,51,34]
 
-# zeros = [0 for i in range(100)]
+number_count = []
+zeros = [0 for i in range(100)]
 
-# for i in a :
-#     # zeros[i] =  zeros[i] + 1
-#     print(zeros[i] + 1)
+size = len(a)
+
+for i in a :
+    zeros[i] =  zeros[i] + 1
+
+
+number_count = zeros[ : max(a)+1]
+
+final = []
+for idx, number in enumerate(number_count) :
+    temp = [ idx for i in range(number)]
+    final.extend(temp)
     
-# print(zeros)    
+print(final)    
