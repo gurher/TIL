@@ -32,23 +32,34 @@ def diagonalDifference(arr):
     return abs(right - left)
 
 
-
-a = [34,5,3,2,51,34]
-
-number_count = []
-zeros = [0 for i in range(100)]
-
-size = len(a)
-
-for i in a :
-    zeros[i] =  zeros[i] + 1
-
-
-number_count = zeros[ : max(a)+1]
-
-final = []
-for idx, number in enumerate(number_count) :
-    temp = [ idx for i in range(number)]
-    final.extend(temp)
+def countingSort(arr):
     
-print(final)    
+    number_count = []
+    zeros = [0 for i in range(100)]
+
+    size = len(a)
+
+    for i in a :
+        zeros[i] =  zeros[i] + 1
+    return zeros
+
+    # number_count = zeros[ : max(a)+1]
+
+    # final = []
+    # for idx, number in enumerate(number_count) :
+    #     temp = [ idx for i in range(number)]
+    #     final.extend(temp)
+        
+    # print(final)    
+    
+    
+def flippingMatrix(matrix):   
+    max_total = 0
+    n = int(len(matrix)/2)
+
+    for i in range(n):
+        for j in range(n):
+            max_s = max(matrix[i][j], matrix[i][(2*n-1)-j], matrix[(2*n-1)-i][j], matrix[(2*n-1)-i][(2*n-1)-j])
+            max_total += max_s
+
+    return max_total 
