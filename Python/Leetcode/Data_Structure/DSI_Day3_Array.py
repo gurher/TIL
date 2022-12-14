@@ -48,3 +48,16 @@ print(day3.intersect( nums1, nums2) )
  
 
 
+
+
+
+import collections
+    
+number_dict = collections.defaultdict(list)
+
+a = [1,2,3,4,1,2,3]
+for idx, num in enumerate(a) :
+    number_dict[num].append(idx)
+
+for idx, values in number_dict.items():
+    print(idx, values)

@@ -4,15 +4,17 @@ class Solution(object):
     
     def sortedSquares(self, nums):
         """
-        https://leetcode.com/problems/squares-of-a-sorted-array/discuss/222079/Python-O(N)-10-lines-two-solutions-explained-beats-100
+        https://leetcode.com/proble ms/squares-of-a-sorted-array/discuss/222079/Python-O(N)-10-lines-two-solutions-explained-beats-100
         """
-        temp = []
-        for num in nums:
-            temp.append(num**2)
-            
-        return sorted(temp)    
         
-    
+        squared_arr = []
+        for num in nums:
+            squared_arr.append(num**2)
+        
+        squared_arr.sort()    
+        return squared_arr
+                
+        
     
     def rotate(self, nums, k):
         """ 
@@ -69,6 +71,11 @@ class Solution(object):
 
 
     
+for index in range(10, -1, -1):
+    print(index)
     
+        
     
+
+
 
