@@ -1,7 +1,9 @@
-import collections 
+import collections
+import itertools
 
 class Solution(object):
     
+    '''977. Squares of a Sorted Array'''
     def sortedSquares(self, nums):
         """
         https://leetcode.com/proble ms/squares-of-a-sorted-array/discuss/222079/Python-O(N)-10-lines-two-solutions-explained-beats-100
@@ -26,7 +28,7 @@ class Solution(object):
         # return result
                 
         
-    
+    '''189. Rotate Array'''
     def rotate(self, nums, k):
         """ 
         final = []
@@ -78,15 +80,7 @@ class Solution(object):
         for i in range(len(nums)):
             nums[(i+k)%len(nums)] = temp[i]
 
-        return nums    
+        return nums   
 
 
-    
-for index in range(10, -1, -1):
-    print(index)
-    
-        
-    
-
-
-
+test = Solution()

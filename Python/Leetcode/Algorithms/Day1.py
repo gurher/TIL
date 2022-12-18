@@ -1,4 +1,8 @@
+import collections
+import itertools
+
 class Solution:
+    '''704. Binary Search'''
     def binary_search(self, nums, target) :
         self.cnt = 0
         
@@ -8,17 +12,17 @@ class Solution:
             else:
                 self.cnt+=1        
         return -1
-    
-    
-    
+
+
+    '''278. First Bad Version'''
     def isBadVersion(self, mid ,t) :
         self.target = t
         if mid >= self.target :
             return True
         else :
             return False
-        
-
+    
+    
     def firstBadVersion(self, n ,t) :
         self.left, self.right = 1, n
         
@@ -30,7 +34,7 @@ class Solution:
                 self.left = self.mid + 1
         return self.left
     
-    
+    '''35. Search Insert Position'''
     def searchInsert(self, nums, target) :        
         self.nums = nums
         self.target = target
@@ -48,4 +52,4 @@ class Solution:
 
     
     
-sample = Solution()
+test = Solution()

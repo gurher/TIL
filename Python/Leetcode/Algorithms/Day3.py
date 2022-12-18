@@ -1,6 +1,9 @@
+import collections
+import itertools
 
 class Solution(object):
     
+    '''283. Move Zeroes'''
     def moveZeroes(self, nums):
         
         last_zero = 0
@@ -10,7 +13,7 @@ class Solution(object):
                 last_zero += 1
         return nums
     
-        
+    '''167. Two Sum II - Input Array Is Sorted'''        
     def twoSum(self, numbers, target):
         
         '''
@@ -33,6 +36,7 @@ class Solution(object):
                 left += 1
             else:
                 right -= 1
-        return [-1, -1]
-                
-                            
+        return [-1, -1]   
+    
+    
+                                         

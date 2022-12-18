@@ -79,18 +79,18 @@ def firstUniqChar(s):
     # return -1        
     
 ########################################################################
-    
+    import collections
     if not s:
             return -1
 
-    hashmap = Counter(s)
+    hashmap = collections.Counter(s)
 
     for index, char in enumerate(s):
         if hashmap[char] == 1:
             return index
     return -1
 ########################################################################
-
+'''680. Valid Palindrome II'''
 def validPalindrome(s):
     def check_palindrome(s, i, j):
         while i < j:
@@ -112,8 +112,79 @@ def validPalindrome(s):
     
     return True
 
+########################################################################
+'''163. Missing Ranges'''
+
+# def findMissingRanges(self, nums, lower, upper):
+
+    # # formats range in the requested format
+
+    # def formatRange(lower, upper):
+    #     if lower == upper:
+    #         return str(lower)
+    #     return str(lower) + "->" + str(upper)
+
+    # result = []
+    # for i in range(len(nums) + 1):
+    #     prev = lower - 1
+    #     curr = nums[i]  if i < len(nums) else upper + 1
+            
+    #     if prev + 1 <= curr - 1:
+    #         result.append(formatRange(prev + 1, curr - 1))
+    #     prev = curr
+    # # return result
 
 
+nums = [0,1,3,49,50,75] 
+lower = -3 
+upper = 99
+
+def findMissingRanges(nums, lower, upper):
+    def formatRange(lower, upper):
+        if lower == upper:
+            return str(lower)
+        return str(lower) + "->" + str(upper)
+
+    result = []
+    prev = lower - 1
+    for i in range(len(nums) + 1):
+        if i < len(nums):
+            curr = nums[i] 
+        else :
+            curr = upper + 1
+        
+        # print(prev, ':', curr)
+        # print(prev + 1, ':', curr-1)
+        
+        # print('====================================')
+        if prev + 1 <= curr - 1:
+            result.append(formatRange(prev + 1, curr - 1))
+        prev = curr
+    return result
+
+########################################################################
+
+'''22. Generate Parentheses'''
+
+
+n = 3
+def generateParenthesis(n):
+    ans = []
+    def backtrack(S = [], left = 0, right = 0):
+        if len(S) == 2 * n:
+            ans.append("".join(S))
+            return
+        if left < n:
+            S.append("(")
+            backtrack(S, left+1, right)   # recurisive
+            S.pop()
+        if right < left:
+            S.append(")")
+            backtrack(S, left, right+1)   # recurisive
+            S.pop()
+    backtrack()
+    return ans 
+########################################################################
 
 
 

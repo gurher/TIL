@@ -1,25 +1,26 @@
 
 class Solution(object):
+    
+    '''1. Two Sum'''
     def twoSum(self, nums, target):
-        goal = {}
-        for i in range(len(nums)):
-            print(target-nums[i])
-            print(goal)
-            if target-nums[i] in goal:
-                return [goal[target-nums[i]],i]
-            else:
-                goal[nums[i]]=i
-            print(goal)
-        # import collections 
-        # dic = collections.defaultdict(list)
-        
+        # goal = {}
         # for i in range(len(nums)):
-        #     temp = target - nums[i]
-        #     if temp in dic:
-        #         return [i, dic[temp][0]]
-        #     dic[nums[i]].append(i)   
+        #     # print(target-nums[i])
+        #     # print(goal)
+        #     if target-nums[i] in goal:
+        #         return [goal[target-nums[i]],i]
+        #     else:
+        #         goal[nums[i]]=i
+        #     # print(goal)
             
-
+        for i in range(len(nums)):
+            for j in range(i+1,len(nums)) :
+                if nums[i]+nums[j] == target:
+                    return [i,j]
+                else:
+                    continue
+            
+    '''88. Merge Sorted Array'''
     def merge(self, nums1, m, nums2, n):
         
         nums1 = sorted(nums1,reverse=True)

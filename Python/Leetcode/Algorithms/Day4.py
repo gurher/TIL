@@ -1,4 +1,9 @@
+import collections
+import itertools
+
 class Solution(object):
+    
+    '''344. Reverse String'''    
     def reverseString(self, string):
         s = 0
         e = len(string)-1
@@ -9,6 +14,7 @@ class Solution(object):
     
         return string
     
+    '''557. Reverse Words in a String III'''
     def reverseWords(self, s):
             
         words = s.split(' ')
@@ -20,6 +26,19 @@ class Solution(object):
                 temp.append(string[-j]) 
             final.append(''.join(temp))
 
-        ans = ' '.join(final)
+        ans = ' '.join(final)        
         
         return ans        
+    
+    
+
+    # s = "Let's take LeetCode contest"
+    # # Output: "s'teL ekat edoCteeL tsetnoc"
+
+    # words = s.split()
+    # reversed_words = []
+    # for word in words:
+    #     reversed_word = word[::-1]
+    #     reversed_words.append(reversed_word)
+    # return ' '.join(reversed_words)
+
