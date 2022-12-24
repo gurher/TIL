@@ -10,6 +10,7 @@ class Solution:
     def maxSubArray(self, nums):
         current_sum = nums[0]
         best_sum = nums[0]
+        
         for item in nums[1:]:
             
             current_sum = max(item,current_sum+item)
@@ -18,3 +19,4 @@ class Solution:
         return best_sum
         
 test = Solution()
+                

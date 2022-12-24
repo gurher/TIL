@@ -65,11 +65,12 @@ class Solution(object):
         #         diff = max(prices[j] - curr_stock, diff)
         #         j+=1    
         # return diff
-        'Time exceeds'
+        # 'Time exceeds'
         
         min_price = float('inf')
         max_profit = 0
         for i in range(len(prices)):
+            
             if prices[i] < min_price:
                 min_price = prices[i]
             elif prices[i] - min_price > max_profit:
@@ -79,5 +80,3 @@ class Solution(object):
             
 # test = Solution()
 
-
- 

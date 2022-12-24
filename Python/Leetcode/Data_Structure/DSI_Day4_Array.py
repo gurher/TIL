@@ -41,29 +41,3 @@ def matrixReshape(self, mat, r, c):
 
 '''118. Pascal's Triangle'''
 
-
-# n = 5
-
-# result = []
-# for i in range(n):
-#     l = 0
-#     r = i
-#     temp = [None for _ in range(i)]
-    
-#     while l < i :
-#         if l == 0:
-#             temp[l], = 0
-            
-        
-#         l+=1
-
-# print(result)        
-    
-     
-    
-        
-        
-        
-    
-    
-        
