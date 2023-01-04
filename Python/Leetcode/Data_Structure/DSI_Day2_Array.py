@@ -41,3 +41,12 @@ class Solution(object):
         return nums1
         
 test = Solution()
+
+
+node = [1]
+node = '22'
+if not node :
+    print('no')
+
+else :
+    print(node)

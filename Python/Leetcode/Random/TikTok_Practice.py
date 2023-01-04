@@ -60,7 +60,7 @@ def twoSumLessThanK(nums, k):
     #         res = max(res, nums[i] + nums[j])
     #         i += 1
     # return res
-    ########################################################################
+########################################################################
     
     
 
@@ -186,5 +186,74 @@ def generateParenthesis(n):
     return ans 
 ########################################################################
 
+'''26. Remove Duplicates from Sorted Array'''
+
+def removeDuplicates(self, nums):
+    size = len(nums)
+    insertIndex = 1
+    for i in range(1, size) :
+
+        if nums[i - 1] != nums[i] :      
+            nums[insertIndex] = nums[i] 
+            insertIndex = insertIndex + 1       
 
 
+    return insertIndex
+
+########################################################################
+
+'''.125. Valid Palindrome'''
+
+# s = "A man, a plan, a canal: Panama"
+# s = "race a car"
+# s = '0p'
+# s = " "
+
+def isPalindrome(s):
+    c 
+
+    return True
+
+def isPalindrome(s):
+    s = ''.join(e for e in s if e.isalnum()).lower()    
+    return s==s[::-1]    
+
+def isPalindrome_solution(s):
+    # s = "A man, a plan, a canal: Panama"
+    
+    i, j = 0, len(s) - 1
+
+    while i < j:
+        while i < j and not s[i].isalnum():
+            i += 1
+        while i < j and not s[j].isalnum():
+            j -= 1
+
+        if s[i].lower() != s[j].lower():
+            return False
+
+        i += 1
+        j -= 1
+    return True
+
+########################################################################
+
+
+'''202. Happy Number'''
+def isHappy(n):
+
+    def get_next(n):
+        total_sum = 0
+        while n > 0:
+            n, digit = divmod(n, 10)
+            total_sum += digit ** 2
+        return total_sum
+
+    seen = set()
+    while n != 1 and n not in seen:
+        seen.add(n)
+        n = get_next(n)
+        print(n)
+
+    return n == 1   
+########################################################################
