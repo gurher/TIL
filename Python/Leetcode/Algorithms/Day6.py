@@ -34,7 +34,7 @@ class Solution(object):
     
     def checkInclusion(s1, s2) :
     
-        cntr, w = Counter(s1), len(s1)   
+        cntr, w = collections.Counter(s1), len(s1)   
 
         for i in range(len(s2)):
             if s2[i] in cntr: 

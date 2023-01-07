@@ -1,3 +1,5 @@
+import collections
+import itertools
 
 
 '''945. Minimum Increment to Make Array Unique'''
@@ -22,7 +24,7 @@ def minIncrementForUnique(nums):
     
 ########################################################################
     res = need = 0
-    for i in sorted(A):
+    for i in sorted(nums):
         res += max(need - i, 0)
         need = max(need + 1, i + 1)
     return res 
@@ -67,19 +69,19 @@ def twoSumLessThanK(nums, k):
 '''387. First Unique Character in a String'''
 
 def firstUniqChar(s):
-    # s = list(s)
-    # import collections
-    # collection = collections.Counter(s)
+    s = list(s)
+    import collections
+    collection = collections.Counter(s)
 
-    # for letter, count in collection.items():
-    #     if count == 1:
-    #         ans = s.index(letter)
-    #         return ans
+    for letter, count in collection.items():
+        if count == 1:
+            ans = s.index(letter)
+            return ans
 
-    # return -1        
+    return -1        
     
 ########################################################################
-    import collections
+def firstUniqChar(s):
     if not s:
             return -1
 
@@ -210,11 +212,6 @@ def removeDuplicates(self, nums):
 # s = " "
 
 def isPalindrome(s):
-    c 
-
-    return True
-
-def isPalindrome(s):
     s = ''.join(e for e in s if e.isalnum()).lower()    
     return s==s[::-1]    
 
@@ -257,3 +254,5 @@ def isHappy(n):
 
     return n == 1   
 ########################################################################
+
+
