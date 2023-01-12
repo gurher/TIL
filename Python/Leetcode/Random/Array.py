@@ -238,7 +238,6 @@ def replaceElements(arr):
     N = len(arr) 
     final = [0]*N
 
-
     for curr_idx, num in enumerate(arr) :
         
         right_idx = curr_idx +1

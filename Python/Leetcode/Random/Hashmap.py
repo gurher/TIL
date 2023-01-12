@@ -55,6 +55,18 @@ def majorityElement(nums):
 
 ########################################################################
 
+'''217. Contains Duplicate'''
+
+def containsDuplicate(nums):
+        length = len(set(nums))
+        if length == len(nums):
+            return False
+        else: 
+            return True
+        
+        
+########################################################################
+
 '''242. Valid Anagram'''
 
 def isAnagram(s, t):
@@ -65,6 +77,25 @@ def isAnagram(s, t):
 
 
 ########################################################################
+
+
+'''387. First Unique Character in a String'''
+
+def firstUniqChar(s):
+    hashmap = collections.Counter(s)        
+
+    unique_letter = []
+    for letter, cnt in hashmap.items():
+        if cnt == 1 :
+            unique_letter.append(letter)
+
+    for idx, letter in enumerate(s) :
+        if letter in unique_letter :
+            return idx
+        
+
+########################################################################
+ 
 
 '''1329. Sort the Matrix Diagonally'''
 
