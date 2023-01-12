@@ -60,6 +60,30 @@ def findMissingRanges(nums, lower, upper):
 
 ########################################################################
 
+'''202. Happy Number'''
+
+def isHappy(n):
+    def square_number(num):
+        str_num = str(num)
+        squared_num = 0
+        for i in str_num:
+            squared_num+= int(i)**2
+        return squared_num
+
+    squared = []
+    while True:
+        n = square_number(n)
+        if n in squared :
+            return False
+        elif n == 1:
+            return True
+        else :
+            squared.append(n)
+    
+
+
+########################################################################
+
 '''268. Missing Number'''
 
 def missingNumber(nums):

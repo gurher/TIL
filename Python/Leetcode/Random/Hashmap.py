@@ -1,4 +1,4 @@
-import collections
+import collections 
 import itertools
 import heapq
 
@@ -36,6 +36,17 @@ def romanToInt(s):
             curr=char
             final-=dic[char]        
     return final    
+
+    # num = 0
+    # prev_letter = 0
+
+    # for letter in s[::-1]:
+    #     if dic[letter]<prev_letter:
+    #         num-=dic[letter]
+    #     else :
+    #         num+=dic[letter] 
+    #         prev_letter = dic[letter]
+    # num
 
 ########################################################################
 
@@ -78,6 +89,42 @@ def isAnagram(s, t):
 
 ########################################################################
 
+'''350. Intersection of Two Arrays II'''
+
+def intersect(nums1, nums2):
+    "Mediocre in speed and less space needed"
+    from collections import Counter
+    
+    num1_set = Counter(nums1)
+    res = []
+    for num in nums2 :
+        if num in num1_set.keys() and num1_set[num] > 0:
+            res.append(num)
+            num1_set[num]-=1
+        else :
+            continue  
+    return res
+
+    "Faster in speed but requires extra memory space"
+        # nums1_set = Counter(nums1)
+        # nums2_set = Counter(nums2)
+        # final = []
+        # if len(nums1) >= len(nums2) :
+        #     temp = nums1_set - nums2_set
+        #     diff = nums1_set - temp
+        #     for i,j in diff.items():
+        #         final+=([i]*j)
+        #     return final
+                
+        # elif len(nums1) < len(nums2):
+        #     temp = nums2_set - nums1_set
+        #     diff = nums2_set - temp
+        #     for i,j in diff.items():
+        #         final+=([i]*j)
+        #     return final
+         
+
+########################################################################
 
 '''387. First Unique Character in a String'''
 
@@ -128,5 +175,8 @@ def diagonalSort(mat):
         
         return mat
     
-########################################################################
+
+
+
+
 

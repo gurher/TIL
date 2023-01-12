@@ -79,14 +79,15 @@ def maxProfit(prices):
 
 # Sliding Window Technique
 def maxProfit(prices):
-    profit = 0
-    l = 0
-    for r in range(len(prices)):
-        if prices[l] > prices[r]:
-            l = r
-        else:
-            profit = max(profit, prices[r] - prices[l])
-    return profit
+    min_price = prices[i]
+    max_profit = 0
+    for i in range(1,len(prices)):
+        if prices[i] < min_price:
+            min_price = prices[i]
+        elif prices[i] - min_price > max_profit:
+            max_profit = prices[i] - min_price
+            
+    return max_profit
 
 
 def maxProfit(prices) :
@@ -106,3 +107,5 @@ def maxProfit(prices) :
 
 
 ########################################################################
+
+
