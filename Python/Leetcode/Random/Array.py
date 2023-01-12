@@ -2,6 +2,78 @@ import collections
 import itertools
 
 ########################################################################
+'''66. Plus One'''
+def plusOne(digits):
+    
+    return True
+
+digits = [1,2,3]
+
+digit = [str(i) for i in digits]
+temp = str(int(''.join(digit)) + 1)
+final = [int(i) for i in temp]
+final
+# return final
+
+########################################################################
+
+'''136. Single Number'''
+
+def singleNumber(nums):
+    check = []
+
+    for num in nums:
+        if num not in check :
+            check.append(num)
+        
+        else :
+            idx = check.index(num)
+            check.pop(idx)
+    return check        
+
+
+########################################################################
+
+'''163. Missing Ranges'''
+
+# Output: ["2","4->49","51->74","76->99"]
+
+def findMissingRanges(nums, lower, upper):
+
+    def format(low,upp) :
+        if low==upp:
+            return str(low)    
+        return str(low)+'->'+str(upp)
+
+    result = []
+    prev = lower - 1
+    for i in range(len(nums) + 1):
+        if i < len(nums):
+            curr = nums[i] 
+        else :
+            curr = upper + 1
+
+        if prev + 1 <= curr - 1:
+            result.append(format(prev + 1, curr - 1))
+        prev = curr
+    return final     
+
+########################################################################
+
+'''268. Missing Number'''
+
+def missingNumber(nums):
+    N = len(nums)
+    for num in range(N+1):
+        if num not in nums:
+            return num
+
+nums = [1,2,3,4]
+missingNumber(nums)
+
+
+########################################################################
+
 '''485. Max Consecutive Ones'''
 
 def findMaxConsecutiveOnes(nums):
@@ -183,19 +255,6 @@ def replaceElements(arr):
         
     return res[::-1]
 
-########################################################################
-
-'''283. Move Zeroes'''
-
-def moveZeroes(nums):
-        
-    zero = 0
-    for idx, num in enumerate(nums):
-        if nums[idx] != 0:
-            nums[idx], nums[zero] = nums[zero], nums[idx]
-            zero += 1
-            
-    return nums
 
 ########################################################################
 
