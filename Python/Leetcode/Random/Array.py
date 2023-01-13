@@ -354,7 +354,6 @@ def findMaxConsecutiveOnes(nums):
 
     return longest_sequence
 
-nums = [1,0,0,1,1,0,1]
 
 def findMaxConsecutiveOnes(nums):
     longest_sequence = 0
