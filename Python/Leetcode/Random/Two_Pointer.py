@@ -17,6 +17,17 @@ def removeDuplicates(nums):
             cnt+=1        
     return cnt
 
+def removeDuplicates(nums):
+    N = len(nums)
+    cnt = 1
+    pointer = 0
+    for i in range(0,N-1):
+        if nums[i] != nums[i+1]:
+            pointer+=1
+            nums[pointer] = nums[i+1]
+            cnt+=1
+    return cnt  
+
 ########################################################################
 
 '''88. Merge Sorted Array'''
@@ -33,6 +44,9 @@ def merge(nums1, m, nums2, n):
             b -= 1
 
         write_index -= 1
+
+
+
 
 
 ########################################################################
@@ -102,15 +116,8 @@ def isSubsequence(s, t):
 
 '''696. Count Binary Substrings'''
 
-
-def countBinarySubstrings(self, s):
-    return True
-
-
-s = "00110011"
-
-
-########################################################################
+# def countBinarySubstrings(self, s):
+#     return True
 
 ########################################################################
 
@@ -127,4 +134,6 @@ def arithmeticTriplets(nums, diff):
             cnt+=1
             
     return cnt
+
+
 

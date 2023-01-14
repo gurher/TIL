@@ -15,9 +15,8 @@ def twoSums(nums, target):
         if diff not in hashmap:
             hashmap[num] = idx
         else:
-            res = [hashmap[diff], idx]
+            return [hashmap[diff], idx]
             
-    return res
 
 
 ########################################################################

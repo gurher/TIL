@@ -2,18 +2,28 @@ import collections
 import itertools
 
 ########################################################################
+
 '''66. Plus One'''
 def plusOne(digits):
+    digit = [str(i) for i in digits]
+    temp = str(int(''.join(digit)) + 1)
+    final = [int(i) for i in temp]
     
-    return True
+    return final
 
-digits = [1,2,3]
+def plusOne(digits):
 
-digit = [str(i) for i in digits]
-temp = str(int(''.join(digit)) + 1)
-final = [int(i) for i in temp]
-final
-# return final
+    N = len(digits)
+
+    for idx in range(N-1,-1,-1):
+        
+        if digits[idx]==9:
+            digits[idx] = 0        
+        else:
+            digits[idx] = digits[idx]+1  
+            return digits                        
+
+    return [1] + digits
 
 ########################################################################
 
@@ -159,7 +169,7 @@ def sortedSquares(nums):
 
 ########################################################################
 
-'''Duplicate Zeros'''
+'''1089. Duplicate Zeros'''
 
 def duplicateZeros(arr):
 
@@ -257,6 +267,7 @@ def validMountainArray(array):
 ########################################################################
 
 '''1299. Replace Elements with Greatest Element on Right Side'''
+
 def replaceElements(arr):
     
     N = len(arr) 
@@ -282,6 +293,7 @@ def replaceElements(arr):
 ########################################################################
 
 '''905. Sort Array By Parity'''
+
 def sortArrayByParity(nums):
     l = 0
 
@@ -295,7 +307,7 @@ def sortArrayByParity(nums):
 
 ########################################################################
 
-'''Remove Element'''
+'''27. Remove Element'''
 
 def removeElement(self, nums, val):
     while val in nums:
@@ -392,6 +404,7 @@ def thirdMax(nums):
     
 
 ########################################################################
+
 '''448. Find All Numbers Disappeared in an Array'''
 
 def findDisappearedNumbers(nums):        
@@ -444,6 +457,7 @@ def findDisappearedNumbers(nums):
 
 
 '''977. Squares of a Sorted Array'''
+
 def sortedSquares(nums):
     squared_arr = []
     for num in nums:
