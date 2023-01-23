@@ -18,3 +18,4 @@ def isValid(s):
         
     return not stack
 
+

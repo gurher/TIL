@@ -66,7 +66,7 @@ def findMissingRanges(nums, lower, upper):
         if prev + 1 <= curr - 1:
             result.append(format(prev + 1, curr - 1))
         prev = curr
-    return final     
+    return result     
 
 ########################################################################
 
